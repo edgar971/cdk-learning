@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-import { CdkLearningStack } from '../lib/cdk-learning-stack';
+import { ApiLambdaStack } from '../lib/api-lambda-stack';
+import { HomePageStack } from '../lib/home-page-stack';
 
 const app = new cdk.App();
-new CdkLearningStack(app, 'CdkLearningStack', {
-  
-});
+new ApiLambdaStack(app, 'CdkLearningStack', {});
+new HomePageStack(app, 'HomePageStack', {});

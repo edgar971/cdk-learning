@@ -2,20 +2,12 @@ import * as cdk from 'aws-cdk-lib';
 import { LambdaIntegration, RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
-import { Bucket } from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
 import * as path from 'path'
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
 
-export class CdkLearningStack extends cdk.Stack {
+export class ApiLambdaStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
-
-    new Bucket(this, 'FirstS3Bucket', {
-      versioned: true,
-      removalPolicy: cdk.RemovalPolicy.DESTROY,
-      autoDeleteObjects: true
-    });
 
     const apiFunction = new NodejsFunction(this, 'hello-world-function', {
       memorySize: 1024,
